@@ -18,6 +18,6 @@
   "devDependencies": {
     "chai": "^3.4.1",
     "mocha": "^2.3.3",
-    "zombie": "^4.2.1"
+    "zombie": "^2.5.1"
   }
 }
