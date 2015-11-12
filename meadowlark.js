@@ -1,15 +1,7 @@
 var express = require('express');
+var bridgeFact = require('./lib/bridgeFact.js');
 
 var app = express();
-
-var bridgeFacts = [
-  'the bridge is getting you over the river',
-  'there is the marquam bridge that carries I-5 over the willamette',
-  'the fremont bridge carries I-405 over the willamette',
-  'the broadway bridge carries broadway over the willamette',
-  'the ross island bridge carries 26 over the willamette river',
-  'the sellwood bridge connects sellwood to the other side of the river'
-]
 
 // //set-up jade
 // app.engine('.html', require('jade'));
@@ -28,9 +20,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/about', function(req, res){
-        var randomBridgeFact =
-                bridgeFacts[Math.floor(Math.random() * bridgeFacts.length)];
-        res.render('about', { bridgeFact: randomBridgeFact });
+        res.render('about', { bridgeFact: bridgeFact.getBridgeFact() });
 });
 //custom 404 page
 app.use(function(req, res){
