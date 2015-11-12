@@ -14,5 +14,9 @@
     "express-handlebars": "^2.0.1",
     "jade": "^1.11.0",
     "koa": "^1.1.2"
+  },
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "mocha": "^2.3.3"
   }
 }
