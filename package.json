@@ -11,7 +11,6 @@
   "dependencies": {
     "express": "^4.13.3",
     "express-handlebars": "^2.0.1",
-    "jade": "^1.11.0",
     "koa": "^1.1.2"
   },
   "devDependencies": {
@@ -23,6 +22,7 @@
     "grunt-link-checker": "^0.1.0",
     "jshint": "^2.8.0",
     "mocha": "^2.3.3",
+    "node-inspector": "^0.12.3",
     "zombie": "^2.5.1"
   }
 }

@@ -1,13 +1,15 @@
 var express = require('express');
 var bridgeFact = require('./lib/bridgeFact.js');
+var weatherData = require('./lib/weatherData.js');
+
 
 var app = express();
-
 // //set-up jade
 // app.engine('.html', require('jade'));
 
 //set up handlebars view engine
-var handlebars = require('express-handlebars').create({ defaultLayout:'main'});
+var handlebars = require('express-handlebars')
+        .create({ defaultLayout:'main'});
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
@@ -19,6 +21,20 @@ app.use(function(req, res, next){
         res.locals.showTests = app.get('env') !== 'production' &&
                   req.query.test == '1';
         next();
+});
+
+app.use(function(req, res, next){
+      var weather = weatherData.getWeatherData();
+      if(!res.locals.partials) res.locals.partials = {};
+      res.locals.partials.weatherContext = weatherData.getWeatherData();
+      next();
+});
+
+app.get('/headers', function(req, res){
+  res.set('Content-Type', 'text/plain');
+  var s = '';
+  for(var name in req.headers) s += name + ': ' + req.headers[name] + '\n';
+  res.send(s);
 });
 
 app.get('/', function(req, res){
