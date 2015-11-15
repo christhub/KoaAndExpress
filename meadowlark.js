@@ -25,7 +25,6 @@ app.set('view engine', 'handlebars');
 app.set('port' , process.env.PORT || 3000);
 
 app.use(express.static(__dirname + '/public'));
-
 app.use(require('body-parser')());
 
 app.use(function(req, res, next){
@@ -127,15 +126,20 @@ app.get('/newsletter', function(req, res){
 });
 
 app.get('/thank-you', function(req, res){
-  res.render('thank-you')
+  res.render('thank-you');
 });
 
 app.post('/process', function(req, res){
-  console.log('form (from querystring): '+ req.query.form);
-  console.log('CSRF token (from hidden form field): ' + req.body._csrf);
-  console.log('Name (from visible form field): ' + req.body.name );
-  console.log('email (from visible form field): ' + req.body.email);
-  res.redirect(303, '/thank-you');
+  // console.log('form (from querystring): '+ req.query.form);
+  // console.log('CSRF token (from hidden form field): ' + req.body._csrf);
+  // console.log('Name (from visible form field): ' + req.body.name );
+  // console.log('email (from visible form field): ' + req.body.email);
+  if(req.xhr || req.accepts('json,html')==='json'){
+    res.send({ success: true });
+  } else {
+    res.redirect(303, '/thank-you');
+    console.log('dk');
+  }
 });
 
 //custom 404 page
