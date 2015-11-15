@@ -1,7 +1,7 @@
 <div class="formContainer">
   <h2>Sign up for our newsletter to receive news and specials!</h2>
   <form class="form-horizontal" role="form"
-        action="/process?form=newsletter" method="POST">
+        action="newsletter" method="POST">
     <input type="hidden" name="_csrf" value="{{csrf}}">
     <div class="form-group">
       <label for="fieldName" class="col-sm-2 control-label">Name</label>
@@ -22,7 +22,7 @@
       </div>
   </form>
 </div>
-
+<!--
 {{#section 'jquery'}}
   <script>
     $(document).ready(function(){
@@ -47,4 +47,4 @@
       });
     });
   </script>
-{{/section}}
+{{/section}} -->
